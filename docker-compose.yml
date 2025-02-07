@@ -1,0 +1,63 @@
+services:
+  web:
+    build: .
+    # command: python /code/website_core/manage.py runserver 0.0.0.0:8000
+    command: python /code/manage.py runserver 0.0.0.0:8000
+    # command: python manage.py runserver 0.0.0.0:8000
+    # command: python /code/website_core.manage runserver 0.0.0.0:8000
+    # command: python -m website_core.manage runserver 0.0.0.0:8000
+    # command: gunicorn django_project.wsgi -b 0.0.0.0:8000 # new
+    volumes:
+      - .:/code
+    ports:
+      - 8000:8000
+    depends_on:
+      - db
+    # environment:
+    # - "DJANGO_SECRET_KEY=django-insecure-q_53dm(!%l8v%*((3=dn@%pjg%8u7%(_gn!pc#p(-!-l*y5vtq"
+    # - "DJANGO_DEBUG=True"
+    # - "DJANGO_SECURE_SSL_REDIRECT=False" # new
+    # - "DJANGO_SECURE_HSTS_SECONDS=0" # new
+    # - "DJANGO_SECURE_HSTS_INCLUDE_SUBDOMAINS=False" # new
+    # - "DJANGO_SECURE_HSTS_PRELOAD=False" # new
+    # - "DJANGO_SESSION_COOKIE_SECURE=False" # new
+    # - "DJANGO_CSRF_COOKIE_SECURE=False" # new
+
+  db:
+    image: postgres:15
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - "POSTGRES_HOST_AUTH_METHOD=trust"
+      # Additional information:
+      # - POSTGRES_PASSWORD=yourpassword  # Add this line
+      # - POSTGRES_USER=youruser          # Optional: Specify a custom user
+      # - POSTGRES_DB=yourdatabase        # Optional: Specify a custom database
+
+volumes:
+  postgres_data:
+
+    # This is another version that's work :)
+
+    #   services:
+    #   web:
+    #     build: .
+    #     command: python -m website_core.manage runserver 0.0.0.0:8000  # Use -m syntax
+    #     volumes:
+    #       - .:/code
+    #     ports:
+    #       - 8000:8000
+    #     depends_on:
+    #       - db
+    #     environment:
+    #       - DJANGO_SETTINGS_MODULE=website_core.project.settings  # Ensure this is set
+
+    #   db:
+    #     image: postgres:13
+    #     volumes:
+    #       - postgres_data:/var/lib/postgresql/data/
+    #     environment:
+    #       - POSTGRES_PASSWORD=yourpassword  # Replace with your password
+
+    # volumes:
+    #   postgres_data:
