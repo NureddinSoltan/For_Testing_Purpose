@@ -29,13 +29,17 @@ services:
       context: .
       dockerfile: webapp/Dockerfile
     ports:
-      - "3000:3000"
+      - "5173:5173"
+      # - "3000:3000"
     volumes:
       - ./webapp:/app
+      # - ./templates:/app/django-templates  # Add this new volume
+      - .:/django_project
       - /app/node_modules
     environment:
-      - NODE_ENV=development
-    command: npm run dev -- --host 0.0.0.0
+      - NODE_ENV=development 
+    # command: npm run dev -- --host 0.0.0.0
+    command: sh -c "npm install && npm run dev -- --host 0.0.0.0"
     # db:
     #   image: postgres:15
     #   volumes:

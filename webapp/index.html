@@ -12,6 +12,40 @@
     <link rel="stylesheet" href="src/style.css">
     <h1 class="text-red-700 text-3xl">Hello World</h1>
     <p class="p-5 font-extrabold">love you</p>
-
+<section>
+  <div class="flex flex-col items-center justify-center h-screen bg-gray-100">
+    <!-- Candle Container -->
+    <div class="relative">
+      <!-- Candle Flame -->
+      <div class="w-4 h-8 bg-yellow-400 rounded-full absolute -top-4 left-1/2 transform -translate-x-1/2 animate-flicker"></div>
+      
+      <!-- Candle Wick -->
+      <div class="w-1 h-4 bg-gray-800 absolute -top-2 left-1/2 transform -translate-x-1/2"></div>
+      
+      <!-- Candle Body -->
+      <div class="w-12 h-32 bg-white rounded-t-lg shadow-lg relative">
+        <!-- Wax Drips -->
+        <div class="w-4 h-6 bg-red-500 rounded-full absolute -bottom-2 left-2"></div>
+        <div class="w-3 h-5 bg-red-500 rounded-full absolute -bottom-3 right-3"></div>
+      </div>
+      
+      <!-- Candle Base -->
+      <div class="w-16 h-4 bg-gray-300 rounded-b-lg mt-1"></div>
+    </div>
+  </div>
+  
+  <!-- Flicker Animation -->
+  <style>
+    @keyframes flicker {
+      0%, 100% { transform: translateX(0) scale(1); }
+      25% { transform: translateX(-2px) scale(1.05); }
+      50% { transform: translateX(2px) scale(0.95); }
+      75% { transform: translateX(-1px) scale(1.02); }
+    }
+    .animate-flicker {
+      animation: flicker 1.5s infinite;
+    }
+  </style>
+</section>
   </body>
 </html>

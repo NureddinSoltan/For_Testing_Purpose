@@ -142,8 +142,9 @@ DJANGO_VITE = {
 # Only add host/port configs if running in Docker
 if RUNNING_IN_DOCKER:
     DJANGO_VITE["default"].update({
-        "dev_server_port": 3000,
-        "dev_server_host": "frontend",
+        "dev_server_port": 5173,
+        # "dev_server_port": 3000,
+        # "dev_server_host": "frontend",
     })
 
 

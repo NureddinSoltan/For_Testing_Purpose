@@ -9,6 +9,7 @@ RUN npm install
 
 COPY webapp/ .
 
-EXPOSE 3000
+EXPOSE 5173
+# EXPOSE 3000
 
 CMD ["npm", "run", "dev"]
