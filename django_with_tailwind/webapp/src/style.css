@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+/* --content-paths: "../homepage/templates*.html"; */
+@source "../../templates";
+@source "../templates/**/*.html";
+@source "./django-templates/**/*.html";
+@source "/django_project/templates/**/*.html";
+@source "/django_project/**/templates/**/*.html";
+/* @source "..*.html", */

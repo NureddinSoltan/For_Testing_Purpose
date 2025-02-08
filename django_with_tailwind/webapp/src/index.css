@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+/* --content-paths: "../homepage/templates*.html"; */
+@theme {
+    --content-paths: "../templates/**/*.html";
+}
