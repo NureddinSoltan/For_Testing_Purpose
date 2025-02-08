@@ -45,6 +45,9 @@ export default defineConfig({
             usePolling: true, // Ensures Django templates are watched
             ignored: ['!../templates/**/*'], // Make sure templates are included
         },
+        origin: 'http://localhost:5173', // Add this line
+        host: true,
+        port: 5173,
     },
 });
 

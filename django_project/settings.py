@@ -126,12 +126,26 @@ STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
     BASE_DIR / "webapp/dist" # Matches vite config!
+    # BASE_DIR / "webapp" / "dist",
 ]
+
+import os 
+
+RUNNING_IN_DOCKER = os.environ.get('RUNNING_IN_DOCKER', False)
+
 DJANGO_VITE = {
     "default": {
-        "dev_mode": DEBUG,
+        "dev_mode": True,
     }
 }
+
+# Only add host/port configs if running in Docker
+if RUNNING_IN_DOCKER:
+    DJANGO_VITE["default"].update({
+        "dev_server_port": 3000,
+        "dev_server_host": "frontend",
+    })
+
 
 
 # Default primary key field type

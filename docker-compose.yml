@@ -11,8 +11,10 @@ services:
       - .:/code
     ports:
       - 8000:8000
-    depends_on:
-      - db
+    # depends_on:
+    #   - db
+    environment:
+      - RUNNING_IN_DOCKER=True
     # environment:
     # - "DJANGO_SECRET_KEY=django-insecure-q_53dm(!%l8v%*((3=dn@%pjg%8u7%(_gn!pc#p(-!-l*y5vtq"
     # - "DJANGO_DEBUG=True"
@@ -22,17 +24,28 @@ services:
     # - "DJANGO_SECURE_HSTS_PRELOAD=False" # new
     # - "DJANGO_SESSION_COOKIE_SECURE=False" # new
     # - "DJANGO_CSRF_COOKIE_SECURE=False" # new
-
-  db:
-    image: postgres:15
+  frontend:
+    build:
+      context: .
+      dockerfile: webapp/Dockerfile
+    ports:
+      - "3000:3000"
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - ./webapp:/app
+      - /app/node_modules
     environment:
-      - "POSTGRES_HOST_AUTH_METHOD=trust"
-      # Additional information:
-      # - POSTGRES_PASSWORD=yourpassword  # Add this line
-      # - POSTGRES_USER=youruser          # Optional: Specify a custom user
-      # - POSTGRES_DB=yourdatabase        # Optional: Specify a custom database
+      - NODE_ENV=development
+    command: npm run dev -- --host 0.0.0.0
+    # db:
+    #   image: postgres:15
+    #   volumes:
+    #     - postgres_data:/var/lib/postgresql/data/
+    #   environment:
+    #     - "POSTGRES_HOST_AUTH_METHOD=trust"
+    # Additional information:
+    # - POSTGRES_PASSWORD=yourpassword  # Add this line
+    # - POSTGRES_USER=youruser          # Optional: Specify a custom user
+    # - POSTGRES_DB=yourdatabase        # Optional: Specify a custom database
 
 volumes:
   postgres_data:
