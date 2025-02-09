@@ -125,9 +125,11 @@ STATIC_URL = 'static/'
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
-    BASE_DIR / "webapp/dist" # Matches vite config!
+    # BASE_DIR / "webapp/dist"  # Matches vite config!
+    BASE_DIR / "static"  # Matches vite config!
     # BASE_DIR / "webapp" / "dist",
 ]
+VITE_ASSETS_PATH = BASE_DIR / 'webapp/dist'  # Path to the dist folder
 
 import os 
 
