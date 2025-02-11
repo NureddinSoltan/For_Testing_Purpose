@@ -137,7 +137,7 @@ RUNNING_IN_DOCKER = os.environ.get('RUNNING_IN_DOCKER', False)
 
 DJANGO_VITE = {
     "default": {
-        "dev_mode": True,
+        "dev_mode": True, # Set to False in production
     }
 }
 
