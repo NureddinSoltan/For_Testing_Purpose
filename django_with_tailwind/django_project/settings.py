@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure-!bncv-qc7o#*+#y5tf6_=p0^$tefxa)8o^6%ej-q5!w3lqw2(v
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+
 
 
 # Application definition
@@ -121,37 +122,59 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
-STATIC_URL = 'static/'
+# My attemps
+# STATIC_URL = 'static/dist/'
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_DIRS = [
-    # BASE_DIR / "webapp/dist"  # Matches vite config!
-    BASE_DIR / "static"  # Matches vite config!
-    # BASE_DIR / "webapp" / "dist",
-]
-VITE_ASSETS_PATH = BASE_DIR / 'webapp/dist'  # Path to the dist folder
+# STATIC_ROOT = BASE_DIR / 'staticfiles'
+# STATICFILES_DIRS = [
+#     BASE_DIR / "webapp/dist"  # Matches vite config!
+#     # BASE_DIR / "static"  # Matches vite config!
+#     # BASE_DIR / "webapp" / "dist",
+# ]
 
-import os 
 
-RUNNING_IN_DOCKER = os.environ.get('RUNNING_IN_DOCKER', False)
+# import os 
+
+# RUNNING_IN_DOCKER = os.environ.get('RUNNING_IN_DOCKER', False)
+
+# DJANGO_VITE = {
+#     "default": {
+#         "dev_mode": True, # Set to False in production
+#     }
+# }
+
+# # Only add host/port configs if running in Docker
+# if RUNNING_IN_DOCKER:
+#     DJANGO_VITE["default"].update({
+#         "dev_server_port": 5173,
+#         # "dev_server_port": 3000,
+#         # "dev_server_host": "frontend",
+#     })
+
+
+
+# Grok3
+
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]  # Where Vite outputs dist/
+STATIC_ROOT = BASE_DIR / "staticfiles"    # Where collectstatic gathers files
+# STATIC_ROOT = BASE_DIR / "webapp/dist"    # Where collectstatic gathers files
 
 DJANGO_VITE = {
     "default": {
-        "dev_mode": True, # Set to False in production
+        "dev_mode": DEBUG,  # Use Vite dev server in debug mode
+        "manifest_path": BASE_DIR / "static/dist/.vite/manifest.json",  # Adjusted for your structure
+        "static_url_prefix": "/static/",  # Matches Vite’s base
     }
 }
 
-# Only add host/port configs if running in Docker
-if RUNNING_IN_DOCKER:
-    DJANGO_VITE["default"].update({
-        "dev_server_port": 5173,
-        # "dev_server_port": 3000,
-        # "dev_server_host": "frontend",
-    })
-
-
+# VIBE_ASSETS_PATH = BASE_DIR / 'webapp/dist'  # Path to the dist folder
+# VITE_ASSETS_PATH = BASE_DIR / 'static/dist'  # Path to the dist folder
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+print(f"Dev mode: {DJANGO_VITE['default']['dev_mode']}")
+print(f"Manifest path: {DJANGO_VITE['default']['manifest_path'].exists()}")
