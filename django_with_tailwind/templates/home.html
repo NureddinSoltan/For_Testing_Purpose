@@ -8,14 +8,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Tailwind 🤝🏻 Django</title>
     {% vite_hmr_client %}
+    {% vite_asset 'src/style.css' %}
+    {% vite_asset 'src/style.css' %}
+    <link rel="stylesheet" href="/static/dist/assets/tailwind-C33CD3pU.css">
+
+    <!-- Working in the dev mode -->
     <link rel="stylesheet" href="{% vite_asset_url 'src/style.css' %}" />
+
+  
     <!-- <link rel="stylesheet" href="{% vite_asset_url 'src/abc.css' %}" /> -->
     <!-- <link rel="stylesheet" href="{% vite_asset_url 'assets/tailwind-BbpzXeBM.css' %}" /> -->
     <!-- <link rel="stylesheet" href="/static/dist/assets/tailwind-BbpzXeBM.css" /> -->
     <!-- <link rel="stylesheet" href="{% static 'dist/assets/tailwind-BbpzXeBM.css' %}" /> -->
     <!-- <link rel="stylesheet" href="{% static 'css/tailwind-BbpzXeBM.css' %}" /> -->
     <!-- <link rel="stylesheet" href="{% static 'css/abc.css' %}" /> -->
-    <link rel="stylesheet" href="{% static 'css/tailwind-C33CD3pU.css' %}" />
+
+    <!-- Working -->
+    <!-- <link rel="stylesheet" href="{% static 'css/tailwind-C33CD3pU.css' %}" /> -->
+    
+    <!-- <link rel="stylesheet" href="{% static 'assets/tailwind-C33CD3pU.css' %}" />t -->
+    <!-- <link rel="stylesheet" href="{% static 'tailwind-C33CD3pU.css' %}" /> -->
+    <!-- <link rel="stylesheet" href="{% static 'css/ahmed.css' %}" /> -->
+    <!-- <link rel="stylesheet" href="{% static 'assets/ahmed.css' %}" /> -->
+    <!-- <link rel="stylesheet" href="{% static 'ahmed.css' %}" /> -->
+
+
     <!-- <link rel="stylesheet" href="/django_with_tailwind/webapp/dist/assets/tailwind-BbpzXeBM.css" /> -->
     <!-- <link rel="stylesheet" href="{% vite_asset_url '/dist/assets/tailwind-BbpzXeBM.css' %}" /> -->
     <!-- <link rel="stylesheet" href="{% vite_asset_url 'assets/tailwind-BbpzXeBM.css' %}" /> -->
