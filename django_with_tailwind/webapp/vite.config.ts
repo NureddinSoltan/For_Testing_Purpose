@@ -33,7 +33,7 @@ export default defineConfig({
     build: {
         manifest: true,
         emptyOutDir: true,
-        outDir: resolve(__dirname, 'dist'), // Ensure the output folder is 'dist'
+        outDir: resolve(__dirname, '../static/dist'), // Ensure the output folder is 'dist'
         rollupOptions: {
             input: {
                 tailwind: resolve(__dirname, 'src/style.css'),

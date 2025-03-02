@@ -33,7 +33,49 @@
       <div class="w-16 h-4 bg-gray-300 rounded-b-lg mt-1"></div>
     </div>
   </div>
-  
+
+
+
+  <section class="bg-gray-100 flex items-center justify-center h-screen">
+    <div class="text-center">
+        <h1 class="text-2xl font-bold mb-4">Choose the Correct Field</h1>
+        <div class="space-y-4">
+            <div id="correctField" class="p-4 bg-green-200 cursor-pointer rounded-lg shadow-md hover:bg-green-300">
+                Correct Field
+            </div>
+            <div id="wrongField" class="p-4 bg-red-200 cursor-pointer rounded-lg shadow-md hover:bg-red-300">
+                Wrong Field
+            </div>
+        </div>
+        <p id="message" class="mt-4 text-lg font-semibold"></p>
+    </div>
+
+    <script>
+        // Get references to the DOM elements
+        const correctField = document.getElementById('correctField');
+        const wrongField = document.getElementById('wrongField');
+        const message = document.getElementById('message');
+
+        // Add event listeners to the fields
+        correctField.addEventListener('click', () => {
+            message.textContent = 'Correct! You chose the right field.';
+            message.classList.remove('text-red-600');
+            message.classList.add('text-green-600');
+        });
+
+        wrongField.addEventListener('click', () => {
+            message.textContent = 'Wrong! Try again.';
+            message.classList.remove('text-green-600');
+            message.classList.add('text-red-600');
+        });
+    </script>
+</body>
+
+
+
+
+
+
   <!-- Flicker Animation -->
   <style>
     @keyframes flicker {
