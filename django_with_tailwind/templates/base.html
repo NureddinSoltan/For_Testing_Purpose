@@ -1,0 +1,22 @@
+<!-- templates/home.html -->
+{% load django_vite %}
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tailwind 🤝🏻 Django</title>
+    {% vite_hmr_client %}
+
+    {% vite_asset 'static/js/main.js'%}
+    <link rel="stylesheet" href="{% vite_asset_url 'src/style.css' %}" />
+</head>
+<body>
+
+  <div class="m-12">
+    {% block content%}
+    {% endblock%}
+  </div>
+</body>
+</html>

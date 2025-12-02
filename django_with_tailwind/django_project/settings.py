@@ -125,7 +125,7 @@ STATIC_URL = 'static/'
 
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [
-    BASE_DIR / "webapp/dist" # Matches vite config!
+    BASE_DIR / "assets" # Matches vite config!
     # BASE_DIR / "webapp" / "dist",
 ]
 
@@ -135,7 +135,7 @@ RUNNING_IN_DOCKER = os.environ.get('RUNNING_IN_DOCKER', False)
 
 DJANGO_VITE = {
     "default": {
-        "dev_mode": True,
+        "dev_mode": DEBUG,
     }
 }
 
