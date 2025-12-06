@@ -10,9 +10,8 @@
     {% vite_hmr_client %}
 
     {% vite_asset 'static/js/main.js'%}
-    <link rel="stylesheet" href="{% vite_asset_url 'src/style.css' %}" />
 </head>
-<body>
+<body class="bg-green-500 text-5xl text-white">
 
   <div class="m-12">
     {% block content%}
